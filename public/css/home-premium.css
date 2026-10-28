@@ -2778,11 +2778,11 @@
   width: 44px;
   height: 44px;
   place-items: center;
-  border: 1px solid rgba(23, 104, 62, .15);
+  border: 1px solid rgba(23, 104, 62, .32);
   border-radius: 50%;
-  color: #17683e;
-  background: rgba(255, 255, 255, .88);
-  box-shadow: 0 8px 22px rgba(18, 45, 30, .08);
+  color: #17683e !important;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(18, 45, 30, .14);
   cursor: pointer;
   transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease;
 }
@@ -2790,13 +2790,21 @@
 #novedades.news-elegant .news-carousel-button:hover:not(:disabled) {
   transform: translateY(-2px);
   border-color: #17683e;
-  color: #fff;
+  color: #fff !important;
   background: #17683e;
 }
 
 #novedades.news-elegant .news-carousel-button:disabled {
-  opacity: .4;
+  border-color: rgba(23, 104, 62, .2);
+  color: #526b5c !important;
+  background: #f3f6f3;
+  opacity: .85;
   cursor: not-allowed;
+}
+
+#novedades.news-elegant .news-carousel-button:focus-visible {
+  outline: 3px solid #17683e;
+  outline-offset: 3px;
 }
 
 .drive-modal.news-detail-modal .drive-modal-content {
