@@ -10,20 +10,28 @@ class SiteSectionSettings
     public static function definitions(): array
     {
         $newsDefaults = [
-            ['10 de junio de 2026', 'Jornada cívica escolar', 'Estudiantes, docentes y familias participan en actividades formativas y de convivencia de nuestra institución secundaria.', 'Comunidad'],
-            ['5 de junio de 2026', 'Proyectos de estudiantes', 'Los estudiantes de secundaria presentan sus proyectos y comparten lo aprendido en clase.', 'Académico'],
-            ['28 de mayo de 2026', 'Formación para nuestra comunidad', 'Docentes y familias fortalecen el acompañamiento y la educación de los adolescentes.', 'Formación'],
-            ['12 de mayo de 2026', 'Encuentro con las familias', 'La comunicación entre familias y docentes acompaña el desarrollo de los estudiantes de secundaria.', 'Familias'],
-            ['2 de mayo de 2026', 'Lectura y aprendizaje práctico', 'La lectura, la exploración científica y las actividades de aula enriquecen la formación secundaria.', 'Aprendizaje'],
-            ['20 de abril de 2026', 'Aprendizaje fuera del aula', 'Una salida pedagógica permite a los estudiantes de secundaria conocer y explorar su entorno.', 'Experiencias'],
+            ['7 de julio de 2026', 'Proyectos de aula en secundaria', 'Estudiantes presentan materiales y actividades trabajados en clase, fortaleciendo la creatividad y el aprendizaje práctico.', 'Proyectos'],
+            ['18 de septiembre de 2026', 'Jornada cívica escolar', 'Estudiantes de secundaria se reúnen en el patio para participar en actividades de convivencia y vida escolar.', 'Convivencia'],
+            ['8 de octubre de 2026', 'Encuentro con las familias', 'Docentes, familias y estudiantes comparten un encuentro en el aula para acompañar la trayectoria escolar.', 'Familias'],
+            ['8 de octubre de 2026', 'Formación para la comunidad educativa', 'La comunidad educativa participa en una jornada formativa dentro de nuestra institución educativa secundaria.', 'Formación'],
+            ['14 de octubre de 2026', 'Nuestra comunidad estudiantil', 'Estudiantes de secundaria comparten una jornada de encuentro en el patio de su institución.', 'Estudiantes'],
+            ['22 de octubre de 2026', 'Salida pedagógica de secundaria', 'Estudiantes exploran su entorno y realizan aprendizajes fuera del aula junto a su comunidad escolar.', 'Experiencias'],
+            ['23 de octubre de 2026', 'Aprendizaje en el aula', 'Estudiantes y docentes participan en actividades formativas y de aprendizaje en el aula.', 'Aprendizaje'],
+            ['23 de octubre de 2026', 'Ciencias en secundaria', 'Los estudiantes desarrollan actividades de observación y experimentación como parte de su aprendizaje en ciencias.', 'Ciencias'],
+            ['23 de octubre de 2026', 'Exposiciones y trabajos de estudiantes', 'Estudiantes presentan sus trabajos y comparten materiales elaborados durante sus actividades de aprendizaje.', 'Proyectos'],
+            ['26 de octubre de 2026', 'Comunidad educativa en nuestra institución', 'Estudiantes y docentes se reúnen para compartir actividades de la vida escolar secundaria.', 'Comunidad'],
         ];
         $newsImages = [
-            'images/comunidad-educativa.jpg',
-            'images/exposicion-estudiantil.jpg',
-            'images/formacion-docente.jpg',
-            'images/encuentro-con-familias.jpg',
-            'images/aprendizaje-en-el-aula.jpg',
-            'images/salida-pedagogica.jpg',
+            'images/novedad-proyectos-de-aula.jpg',
+            'images/novedad-jornada-escolar.jpg',
+            'images/novedad-encuentro-familias.jpg',
+            'images/novedad-formacion-escolar.jpg',
+            'images/novedad-estudiantes-secundaria.jpg',
+            'images/novedad-salida-pedagogica.jpg',
+            'images/novedad-aprendizaje-aula.jpg',
+            'images/novedad-ciencias-secundaria.jpg',
+            'images/novedad-trabajos-estudiantiles.jpg',
+            'images/novedad-comunidad-educativa.jpg',
         ];
         $newsIcons = ['fa-calendar-alt', 'fa-graduation-cap', 'fa-lightbulb', 'fa-users', 'fa-book-open', 'fa-compass'];
         $newsFields = [];
@@ -175,7 +183,7 @@ class SiteSectionSettings
                 'fields' => array_merge([
                     'eyebrow' => ['label' => 'Texto superior', 'default' => 'Actualidad', 'max' => 100],
                     'title' => ['label' => 'Título de la sección', 'default' => 'Novedades', 'max' => 150],
-                    'description' => ['label' => 'Descripción', 'type' => 'textarea', 'default' => 'Actividades, proyectos y encuentros que muestran el aprendizaje y la vida cotidiana de nuestra institución secundaria.', 'max' => 1000],
+                    'description' => ['label' => 'Descripción', 'type' => 'textarea', 'default' => 'Conoce las actividades, clases y experiencias de aprendizaje de nuestra institución educativa secundaria en Tumbadén.', 'max' => 1000],
                 ], $newsFields),
                 'media' => $newsMedia,
             ],

@@ -68,30 +68,61 @@ class PageManagementTest extends TestCase
         $response = $this->get(route('home'))->assertOk();
         $html = $response->getContent();
 
-        $this->assertSame(6, substr_count($html, 'class="news-grid-item"'));
-        $this->assertSame(6, substr_count($html, 'class="news-card"'));
+        $this->assertSame(10, substr_count($html, 'class="news-grid-item"'));
+        $this->assertSame(10, substr_count($html, 'class="news-card"'));
         $this->assertStringContainsString('id="novedadesGrid"', $html);
         $this->assertStringContainsString('id="novedadesPrev"', $html);
         $this->assertStringContainsString('id="novedadesNext"', $html);
         $this->assertStringContainsString('id="novedadesStatus"', $html);
         $this->assertStringNotContainsString('class="glide__slides news-grid"', $html);
+        $this->assertStringNotContainsString('Oportunidades Laborales para Graduados', $html);
+        $this->assertStringNotContainsString('Intercambio Internacional', $html);
+        $newsStart = strpos($html, '<section id="novedades"');
+        $publicationsStart = strpos($html, '<section id="publicaciones"', $newsStart);
+        $this->assertNotFalse($newsStart);
+        $this->assertNotFalse($publicationsStart);
+        $newsSection = substr($html, $newsStart, $publicationsStart - $newsStart);
+        $this->assertStringNotContainsString('images/logo.jpg', $newsSection);
+        $this->assertStringNotContainsString('images/LOGO.png', $newsSection);
+        foreach ([
+            'images/novedad-proyectos-de-aula.jpg',
+            'images/novedad-jornada-escolar.jpg',
+            'images/novedad-encuentro-familias.jpg',
+            'images/novedad-formacion-escolar.jpg',
+            'images/novedad-estudiantes-secundaria.jpg',
+            'images/novedad-salida-pedagogica.jpg',
+            'images/novedad-aprendizaje-aula.jpg',
+            'images/novedad-ciencias-secundaria.jpg',
+            'images/novedad-trabajos-estudiantiles.jpg',
+            'images/novedad-comunidad-educativa.jpg',
+        ] as $image) {
+            $this->assertStringContainsString(asset($image), $html);
+        }
     }
 
     public function test_homepage_uses_school_photos_in_the_matching_sections(): void
     {
-        $this->get(route('home'))
-            ->assertOk()
-            ->assertSee(asset('images/comunidad-educativa.jpg'), false)
-            ->assertSee(asset('images/exposicion-estudiantil.jpg'), false)
-            ->assertSee(asset('images/formacion-docente.jpg'), false)
-            ->assertSee(asset('images/encuentro-con-familias.jpg'), false)
-            ->assertSee(asset('images/salida-pedagogica.jpg'), false)
-            ->assertSee(asset('images/aprendizaje-en-el-aula.jpg'), false)
-            ->assertSee(asset('images/equipo-estudiantil.jpg'), false)
-            ->assertSee('educación secundaria')
-            ->assertSee('estudiantes de secundaria')
-            ->assertSee('Proyectos de estudiantes')
-            ->assertSee('videos.pexels.com');
+        $response = $this->get(route('home'))->assertOk();
+        $html = $response->getContent();
+
+        foreach ([
+            'images/novedad-proyectos-de-aula.jpg',
+            'images/novedad-jornada-escolar.jpg',
+            'images/novedad-encuentro-familias.jpg',
+            'images/novedad-formacion-escolar.jpg',
+            'images/novedad-estudiantes-secundaria.jpg',
+            'images/novedad-salida-pedagogica.jpg',
+            'images/novedad-aprendizaje-aula.jpg',
+            'images/novedad-ciencias-secundaria.jpg',
+            'images/novedad-trabajos-estudiantiles.jpg',
+            'images/novedad-comunidad-educativa.jpg',
+        ] as $image) {
+            $this->assertStringContainsString(asset($image), $html);
+        }
+
+        $this->assertStringContainsString('educación secundaria', $html);
+        $this->assertStringContainsString('estudiantes de secundaria', $html);
+        $this->assertStringContainsString('videos.pexels.com', $html);
     }
 
     public function test_admin_can_change_a_page_section_and_unpublish_it(): void

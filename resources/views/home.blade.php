@@ -457,7 +457,7 @@
             <li class="news-grid-item">
               <article class="news-card" data-managed-news="true">
               <div class="news-card-cover" style="background-image:linear-gradient(180deg,rgba(6,20,40,.02),rgba(6,20,40,.06));">
-                <img src="{{ $img }}" data-full-src="{{ $img }}" alt="{{ $title }}" loading="lazy" />
+                <img src="{{ $img }}" data-full-src="{{ $img }}" alt="{{ $title }}" loading="lazy" decoding="async" />
                 @if(!empty($tag))
                   <span class="tag-chip"><i class="fas {{ $icon }}" aria-hidden="true"></i> {{ $tag }}</span>
                 @else

@@ -88,56 +88,7 @@ const DEMO_DATA = {
     ],
   },
 
-  novedades: [
-    {
-      id: 'n1',
-      name: 'Semana Cultural 2026',
-      mimeType: 'application/vnd.google-apps.document',
-      modifiedTime: '2026-06-10T10:00:00.000Z',
-      description: 'Celebramos nuestra semana cultural con actividades artísticas y deportivas para toda la comunidad educativa. ¡Un espacio lleno de talentos y creatividad!',
-      tag: 'Eventos',
-    },
-    {
-      id: 'n2',
-      name: 'Olimpiadas Matemáticas Departamentales',
-      mimeType: 'application/vnd.google-apps.document',
-      modifiedTime: '2026-06-05T08:00:00.000Z',
-      description: 'Nuestros estudiantes representarán a la institución en las olimpiadas matemáticas, luego de un brillante proceso de selección interna.',
-      tag: 'Académico',
-    },
-    {
-      id: 'n3',
-      name: 'Nuevo Laboratorio de Tecnología (Inauguración)',
-      mimeType: 'application/vnd.google-apps.document',
-      modifiedTime: '2026-05-28T15:00:00.000Z',
-      description: 'Inauguramos nuestro moderno laboratorio de tecnología con 30 equipos de última generación, fortaleciendo el aprendizaje digital de nuestros estudiantes.',
-      tag: 'Infraestructura',
-    },
-    {
-      id: 'n4',
-      name: 'Programa de Formación — Educación Digital',
-      mimeType: 'application/vnd.google-apps.document',
-      modifiedTime: '2026-05-20T12:00:00.000Z',
-      description: 'Nuevas acciones de formación docente para integrar tecnología en las aulas y mejorar las prácticas pedagógicas.',
-      tag: 'Educación',
-    },
-    {
-      id: 'n5',
-      name: 'Oportunidades Laborales para Graduados',
-      mimeType: 'application/vnd.google-apps.document',
-      modifiedTime: '2026-04-30T09:00:00.000Z',
-      description: 'Bolsa de trabajo y convenios con empresas locales para facilitar la inserción laboral de nuestros egresados.',
-      tag: 'Laborales',
-    },
-    {
-      id: 'n6',
-      name: 'Intercambio Internacional — Visita Técnica',
-      mimeType: 'application/vnd.google-apps.document',
-      modifiedTime: '2026-04-15T11:00:00.000Z',
-      description: 'Acuerdos con instituciones internacionales para intercambios y visitas técnicas de aprendizaje.',
-      tag: 'Internacional',
-    },
-  ],
+  novedades: [],
 
   publicaciones: [
     { id: 'p1', name: 'Manual de Convivencia 2026',     mimeType: 'application/pdf'                          },

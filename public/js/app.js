@@ -1190,7 +1190,16 @@ class SchoolApp {
 
     // fallback images to use when Drive file has no thumbnail
     const FALLBACK_IMAGES = [
-      '/images/1.jpeg','/images/2.jpeg','/images/3.jpeg','/images/4.jpeg','/images/logo.jpg','/images/LOGO.png'
+      '/images/novedad-proyectos-de-aula.jpg',
+      '/images/novedad-jornada-escolar.jpg',
+      '/images/novedad-encuentro-familias.jpg',
+      '/images/novedad-formacion-escolar.jpg',
+      '/images/novedad-estudiantes-secundaria.jpg',
+      '/images/novedad-salida-pedagogica.jpg',
+      '/images/novedad-aprendizaje-aula.jpg',
+      '/images/novedad-ciencias-secundaria.jpg',
+      '/images/novedad-trabajos-estudiantiles.jpg',
+      '/images/novedad-comunidad-educativa.jpg',
     ];
 
     const managedTitles = new Set(
@@ -1199,7 +1208,7 @@ class SchoolApp {
     );
     const uniqueFiles = files.filter(file => {
       const title = (file.name || '').trim().toLocaleLowerCase();
-      if (!title || managedTitles.has(title)) return false;
+      if (!title || /\b(?:logo|logotipo|escudo)\b/i.test(title) || managedTitles.has(title)) return false;
       managedTitles.add(title);
       return true;
     });
@@ -1208,16 +1217,17 @@ class SchoolApp {
       const meta    = DriveService.getMeta(file.mimeType);
       const date    = DriveService.formatDate(file.modifiedTime);
       const desc    = file.description || (file.localUrl
-        ? 'Recurso institucional disponible en el sitio.'
-        : 'Haga clic para acceder al documento completo en Google Drive.');
+        ? 'Actividad y recurso educativo de nuestra institución secundaria.'
+        : 'Conoce las actividades y experiencias educativas de nuestra institución secundaria.');
       const tag     = file.tag || 'Noticia';
       const tagIcon = NEWS_TAGS[tag] ?? NEWS_TAGS.default;
       const viewUrl = file.webViewLink || DriveService.viewUrl(file);
 
-      // Prefer thumbnailLink from Drive; otherwise use a local fallback image (round-robin)
-      const thumb = file.thumbnailLink || (file.localUrl && file.mimeType.startsWith('image/')
-        ? file.localUrl
-        : FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length]);
+      const hasSchoolThumbnail = file.thumbnailLink && !/\b(?:logo|logotipo|escudo)\b/i.test(file.name || '');
+      const isLocalImage = file.localUrl && file.mimeType.startsWith('image/');
+      const thumb = hasSchoolThumbnail
+        ? file.thumbnailLink
+        : (isLocalImage ? file.localUrl : FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length]);
       const fullImage = file.localUrl || file.webContentLink || thumb;
       const openAction = file.localUrl
         ? `window.open('${this._esc(file.localUrl)}','_blank','noopener,noreferrer')`
@@ -1230,7 +1240,7 @@ class SchoolApp {
                  onclick="if (!event.target.closest('.news-cta')) { ${openAction} }"
                  onkeydown="if(event.key==='Enter'&&!event.target.closest('.news-cta'))${openAction}">
           <div class="news-card-cover" aria-hidden="true">
-            <img src="${thumb}" data-full-src="${this._esc(fullImage)}" alt="${this._esc(file.name)}" />
+            <img src="${thumb}" data-full-src="${this._esc(fullImage)}" alt="${this._esc(file.name)}" loading="lazy" decoding="async" />
           </div>
           <div class="news-body">
             <div class="news-date">
