@@ -1,0 +1,146 @@
+/* admin-sidebar.css
+   Consolidated sidebar styles extracted from styles.css
+   Purpose: isolated admin sidebar styling to force consistent branding
+*/
+
+:root {
+  /* Ensure variables are available; rely on existing variables from styles.css */
+}
+
+.admin-area .admin-sidebar {
+  /* Neumorphic soft sidebar */
+  background: linear-gradient(180deg, color-mix(in srgb, var(--clr-surface, #f8fbff), white 6%), color-mix(in srgb, var(--clr-surface, #f8fbff), black 2%));
+  color: rgba(6,20,40,.92);
+  width: 240px;
+  padding: 1rem 0.6rem;
+  /* flush to the very left edge of the viewport */
+  border-radius: 0 12px 12px 0;
+  box-shadow: 10px 16px 36px rgba(7,20,40,.06), -8px -8px 20px rgba(255,255,255,0.85);
+  border-right: 1px solid rgba(7,20,40,0.04);
+  /* Fixed full-height sidebar that starts below the top nav */
+  position: fixed;
+  top: var(--nav-h);
+  bottom: 0;
+  left: 0;
+  height: calc(100vh - var(--nav-h));
+  z-index: 60;
+  overflow-y: auto;
+  /* Removed backdrop-filter for compatibility; rely on translucent background and shadow */
+  opacity: 1;
+}
+
+/* Professional refinements for sidebar content */
+.admin-area .admin-sidebar .admin-sidebar-header { display:flex; align-items:center; gap:.6rem; padding:.6rem; }
+.admin-area .admin-sidebar .brand-mini { display:flex; align-items:center; gap:.5rem; }
+.admin-area .admin-sidebar .brand-mini img { height:40px; width:40px; border-radius:8px; box-shadow: 4px 6px 14px rgba(7,20,40,0.06); }
+.admin-area .admin-sidebar .admin-sidebar-title { font-weight:900; font-size:1.05rem; color: rgba(6,20,40,.95); margin:0; }
+
+.admin-area .admin-sidebar .admin-sidebar-kicker { font-size:.78rem; color: rgba(6,20,40,.6); }
+
+/* Group headings more subtle */
+.admin-area .admin-sidebar-group h4 { color: rgba(6,20,40,.65); font-size:.72rem; margin: .6rem 0 .2rem 0; padding-left:.4rem; font-weight:800; letter-spacing:.8px; }
+
+/* Nav links: compact, consistent icons, subtle separators */
+.admin-area .admin-sidebar-group a {
+  display:flex; align-items:center; gap:.65rem; padding:.6rem .65rem; border-radius:10px; color: rgba(6,20,40,.9);
+  background: transparent; font-weight:700; transition: all .14s ease; font-size:.92rem; margin: .12rem 0;
+}
+.admin-area .admin-sidebar-group a i { color: rgba(6,20,40,.85); width:22px; text-align:center; }
+.admin-area .admin-sidebar-group a .nav-text { flex:1; }
+
+.admin-area .admin-sidebar-group a + a { border-top: 1px solid rgba(7,20,40,0.02); }
+
+.admin-area .admin-sidebar-group a:hover { transform: translateX(6px); box-shadow: 6px 10px 22px rgba(7,20,40,0.04); background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,252,255,0.95)); }
+.admin-area .admin-sidebar-group a.active { background: linear-gradient(90deg, rgba(250,244,230,1), rgba(250,250,250,1)); box-shadow: 6px 10px 22px rgba(7,20,40,0.06); border-left: 4px solid var(--clr-gold); padding-left: .45rem; }
+
+/* Collapsed mode tooltips remain accessible */
+.admin-area.sidebar-collapsed .admin-sidebar { width: 72px; left: 0; padding-top: 1rem; }
+.admin-area.sidebar-collapsed .admin-sidebar .nav-text { display:none; }
+.admin-area.sidebar-collapsed .admin-sidebar .admin-sidebar-header .admin-sidebar-title { display:none; }
+
+/* Footer actions */
+.admin-area .admin-sidebar-footer { padding:.8rem; display:flex; gap:.5rem; }
+.admin-area .admin-sidebar-footer .btn { flex:1; padding:.55rem .6rem; font-weight:800; }
+
+.admin-area .admin-sidebar .admin-sidebar-header { background: transparent; padding: .6rem 0; }
+.admin-area .admin-sidebar .admin-sidebar-avatar { box-shadow: 6px 10px 22px rgba(7,20,40,0.06), -6px -6px 14px rgba(255,255,255,0.85); background: linear-gradient(135deg, var(--clr-gold), var(--clr-navy)); width:48px; height:48px; border-radius:8px; }
+
+.admin-area .admin-sidebar .meta { color: rgba(255,255,255,.95); }
+.admin-area .admin-sidebar .admin-sidebar-kicker { color: rgba(255,255,255,.8); }
+.admin-area .admin-sidebar .admin-sidebar-header h3,
+.admin-area .admin-sidebar .admin-sidebar-header p { color: rgba(255,255,255,0.96); }
+
+.admin-area .admin-sidebar-header .sidebar-toggle { margin-left: auto; color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); border-radius: 0; padding:.35rem; }
+
+.admin-area .admin-sidebar-nav { padding-top: .9rem; }
+.admin-area .admin-sidebar-group h4 { color: rgba(255,255,255,.75); font-size: .72rem; }
+
+.admin-area .admin-sidebar-group a {
+  display:flex; align-items:center; gap:.45rem; padding:.45rem .55rem; border-radius:0; color:rgba(255,255,255,.95);
+  background: transparent; font-weight:700; transition: background .14s ease, transform .14s ease; font-size:.85rem;
+}
+.admin-area .admin-sidebar-group a i { color: rgba(255,255,255,.95); width:20px; text-align:center; }
+/* Make label wrap if sidebar is narrow; allow two-line labels to fit */
+.admin-area .admin-sidebar-group a span {
+  display: inline-block;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.1;
+}
+
+/* When sidebar is collapsed, hide labels but keep accessible tooltips (title attr) */
+.admin-area.sidebar-collapsed .admin-sidebar-group a span { display: none !important; }
+
+.admin-area .admin-sidebar-group a:hover { background: linear-gradient(180deg, rgba(7,20,40,0.03), rgba(7,20,40,0.02)); transform: translateX(6px); box-shadow: inset 2px 2px 8px rgba(255,255,255,0.6); }
+.admin-area .admin-sidebar-group a.active {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--clr-gold), white 92%), color-mix(in srgb, var(--clr-gold), rgba(0,0,0,.02)));
+  box-shadow: inset 3px 6px 14px rgba(7,20,40,.04), 6px 10px 22px rgba(7,20,40,.04);
+  border-left: 4px solid var(--clr-gold);
+  padding-left: .6rem;
+}
+
+.admin-area .admin-sidebar-footer { background: transparent; color: rgba(255,255,255,.9); }
+.admin-area .admin-sidebar-footer .btn { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,252,255,0.95)); color: rgba(6,20,40,.92); border: 1px solid rgba(7,20,40,0.04); box-shadow: 4px 6px 14px rgba(7,20,40,0.04); }
+
+.admin-area .sidebar-user { display:flex; gap:.6rem; align-items:center; padding:.5rem .4rem; margin-bottom:.5rem; }
+.admin-area .sidebar-user-avatar { width:38px; height:38px; border-radius:8px; object-fit:cover; box-shadow: 6px 10px 20px rgba(7,20,40,0.06), -6px -6px 10px rgba(255,255,255,0.85); }
+.admin-area .sidebar-user-name { font-weight:800; font-size:.9rem; color: rgba(6,20,40,.92); }
+.admin-area .sidebar-user-info .muted-note { font-size:.75rem; color: rgba(255,255,255,.75); }
+
+/* Search input */
+.admin-sidebar-search { padding: .5rem .6rem; }
+.sidebar-search-input { width:100%; padding:.45rem .6rem; border-radius:0; border:1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.04); color: #fff; }
+.sidebar-search-input::placeholder { color: rgba(255,255,255,.6); }
+
+.admin-area .admin-sidebar-group a.active i { color: var(--clr-gold); }
+
+/* Subtle custom scrollbar for sidebar */
+.admin-area .admin-sidebar::-webkit-scrollbar { width: 10px; }
+.admin-area .admin-sidebar::-webkit-scrollbar-track { background: transparent; }
+.admin-area .admin-sidebar::-webkit-scrollbar-thumb { background: linear-gradient(180deg, rgba(7,20,40,0.08), rgba(7,20,40,0.12)); border-radius: 8px; }
+
+@media (max-width: 900px) {
+  .admin-area .admin-sidebar { width: 72px; border-right: none; box-shadow: none; border-radius: 0; left: 0; position: fixed; }
+  .admin-area .admin-sidebar .meta { display: none; }
+}
+
+/* Ensure the admin content accounts for the fixed sidebar on wide screens */
+@media (min-width: 901px) {
+  .admin-area.full-bleed .admin-layout {
+    grid-template-columns: 1fr; /* collapse grid columns; content will be offset by padding */
+    padding-left: calc(240px);
+  }
+  .admin-area.sidebar-collapsed.full-bleed .admin-layout { padding-left: calc(72px); }
+}
+
+/* Prevent white boxed elements inside the sidebar from covering menu items */
+.admin-area .admin-sidebar .bento-card,
+.admin-area .admin-sidebar .admin-sidebar-header,
+.admin-area .admin-sidebar .admin-sidebar-footer,
+.admin-area .admin-sidebar .admin-sidebar-group a .badge,
+.admin-area .admin-sidebar .admin-sidebar-group a .meta {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* NOTE: navbar color handled globally by neumorphism rules in styles.css; avoid forcing white here */

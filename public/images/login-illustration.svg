@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="480" height="360" viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de bienvenida">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#eafaf0"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="20" fill="url(#g1)" />
+  <g transform="translate(36,36)">
+    <rect x="0" y="0" width="160" height="100" rx="12" fill="#f7fff7" stroke="#e2f3e6"/>
+    <rect x="180" y="0" width="220" height="100" rx="12" fill="#ffffff" stroke="#f0f6f2"/>
+    <circle cx="60" cy="140" r="36" fill="#dff7e8"/>
+    <rect x="120" y="120" width="200" height="20" rx="6" fill="#fff" opacity="0.9"/>
+    <rect x="120" y="150" width="140" height="14" rx="6" fill="#fff" opacity="0.9"/>
+    <g transform="translate(10,190)">
+      <rect x="0" y="0" width="420" height="40" rx="8" fill="#e8f8ee"/>
+      <rect x="8" y="6" width="120" height="28" rx="6" fill="#ffffff"/>
+    </g>
+  </g>
+</svg>
